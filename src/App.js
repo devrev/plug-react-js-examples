@@ -1,4 +1,5 @@
-import Widget from "./Widget";
+import Widget from "./components/Widget";
+
 function App() {
   return (
     <div>

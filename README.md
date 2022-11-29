@@ -1,6 +1,6 @@
 
 # React Js Examples for integration with DevRev PLuG Widget
-This repository contains React Js integration examples for the PLuG widget.
+This repository contains React Js integration example for the PLuG widget.
 
 You can learn more about the PLuG widget itself in our [Introduction to PLuG Widget](https://devrev.ai/docs/plug/introduction)
 

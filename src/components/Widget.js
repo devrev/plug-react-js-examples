@@ -30,7 +30,7 @@ const Widget=() => {
         },
     };
 
-    const runScript = ()=>{
+    const initPlug = ()=>{
       new window.Plug(config,callbacks);
     }
 
@@ -39,7 +39,7 @@ const Widget=() => {
       // Replace your org slug to consume the widget.js file -- "https://plug.devrev.ai/{YOUR_ORG_SLUG}/widget.js" 
       script.src = "https://plug.devrev.ai/devrev/widget.js";
       document.body.appendChild(script);
-      script.onload = runScript;
+      script.onload = initPlug;
     },[])
 
   return (
