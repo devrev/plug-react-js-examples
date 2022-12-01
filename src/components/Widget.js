@@ -33,6 +33,10 @@ const Widget=() => {
     const hasWidgetBeenInjected = useRef(false);
 
     useEffect(()=>{
+
+      // Strict Mode in React 18+ causes use effect to be triggered twice.
+      // With Strict Mode starting in React 18, whenever a component mounts in development, React will simulate immediately unmounting and remounting the component
+      // https://reactjs.org/docs/strict-mode.html
       if(!hasWidgetBeenInjected.current){
         const script = document.createElement('script');
         // Replace your org slug to consume the widget.js file -- "https://plug.devrev.ai/{YOUR_ORG_SLUG}/widget.js" 
