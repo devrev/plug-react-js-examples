@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const Widget=() => {
     const config = {
@@ -30,17 +30,18 @@ const Widget=() => {
         },
     };
 
-    const initPlug = ()=>{
-      new window.Plug(config,callbacks);
-    }
+    const hasWidgetBeenInjected = useRef(false);
 
     useEffect(()=>{
-      const script = document.createElement('script');
-      // Replace your org slug to consume the widget.js file -- "https://plug.devrev.ai/{YOUR_ORG_SLUG}/widget.js" 
-      script.src = "https://plug.devrev.ai/devrev/widget.js";
-      document.body.appendChild(script);
-      script.onload = initPlug;
-    },[])
+      if(!hasWidgetBeenInjected.current){
+        const script = document.createElement('script');
+        // Replace your org slug to consume the widget.js file -- "https://plug.devrev.ai/{YOUR_ORG_SLUG}/widget.js" 
+        script.src = "https://plug.devrev.ai/devrev/widget.js";
+        document.body.appendChild(script);
+        script.onload = ()=>{new window.Plug(config,callbacks);};
+      }
+      hasWidgetBeenInjected.current = true;
+    },[hasWidgetBeenInjected])
 
   return (
     <div>Plug React Js Example</div>
